@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para mi amor ❤️</title>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+    }
+    /* Etapa 1: Pantalla negra */
+    #inicio {
+        background-color: black;
+        color: white;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2em;
+        text-align: center;
+    }
+    /* Etapa 2: Corazón grande */
+    #corazon {
+        display: none;
+        background-color: white;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        font-size: 5em;
+        color: red;
+    }
+    /* Etapa 3: Fondo rojo con corazones y fotos */
+    #final {
+        display: none;
+        background-color: red;
+        width: 100%;
+        height: 100vh;
+        position: relative;
+        text-align: center;
+        color: white;
+        overflow-y: auto;
+        padding: 20px;
+    }
+    .fotos {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+    }
+    .fotos img {
+        max-width: 200px;
+        border-radius: 15px;
+        border: 3px solid white;
+    }
+    /* Animación de corazones */
+    .corazon-flotante {
+        position: absolute;
+        font-size: 20px;
+        color: pink;
+        animation: flotar 5s linear infinite;
+    }
+    @keyframes flotar {
+        0% { transform: translateY(0); opacity: 1; }
+        100% { transform: translateY(-800px); opacity: 0; }
+    }
+</style>
+</head>
+<body>
+
+<!-- Etapa 1 -->
+<div id="inicio">
+    Al principio todo fue oscuro y difícil... ❤️
+</div>
+
+<!-- Etapa 2 -->
+<div id="corazon">
+    ❤️
+</div>
+
+<!-- Etapa 3 -->
+<div id="final">
+    <h1>Para mi princesa ❤️</h1>
+    <p>
+        Aquí puedes escribir un texto largo con tus palabras bonitas, recordando
+        todos los momentos especiales que han vivido juntos, lo mucho que la amas
+        y lo feliz que eres a su lado...
+    </p>
+    <div class="fotos">
+        <img src="foto1.jpg" alt="Nosotros">
+        <img src="foto2.jpg" alt="Nosotros">
+        <img src="foto3.jpg" alt="Nosotros">
+    </div>
+</div>
+
+<script>
+    // Etapa 1: Pantalla negra 20s
+    setTimeout(() => {
+        document.getElementById("inicio").style.display = "none";
+        document.getElementById("corazon").style.display = "flex";
+
+        // Lanzar corazones flotantes
+        for (let i = 0; i < 20; i++) {
+            let corazon = document.createElement("div");
+            corazon.classList.add("corazon-flotante");
+            corazon.style.left = Math.random() * window.innerWidth + "px";
+            corazon.style.top = window.innerHeight + "px";
+            corazon.innerHTML = "❤️";
+            document.getElementById("corazon").appendChild(corazon);
+
+            setTimeout(() => corazon.remove(), 5000);
+        }
+
+        // Etapa 3 después de 3s
+        setTimeout(() => {
+            document.getElementById("corazon").style.display = "none";
+            document.getElementById("final").style.display = "block";
+
+            // Fondo con corazones flotantes infinitos
+            setInterval(() => {
+                let corazon = document.createElement("div");
+                corazon.classList.add("corazon-flotante");
+                corazon.style.left = Math.random() * window.innerWidth + "px";
+                corazon.style.top = window.innerHeight + "px";
+                corazon.innerHTML = "❤️";
+                document.getElementById("final").appendChild(corazon);
+
+                setTimeout(() => corazon.remove(), 5000);
+            }, 300);
+
+        }, 3000);
+
+    }, 20000); // 20s
+</script>
+
+</body>
+</html>
